@@ -1,0 +1,43 @@
+{
+  "sd_ralp": {
+    "eta": 0.5,
+    "alpha": 0.05,
+    "beta": 0.9,
+    "rho": 0.85
+  },
+  "static_ralp": {
+    "eta": 0.5,
+    "alpha": 0.0,
+    "beta": 0.0,
+    "rho": 0.0
+  },
+  "global_gas": {
+    "eta": 0.5,
+    "alpha": 0.01,
+    "beta": 0.9,
+    "rho": 0.0
+  },
+  "tvw": {
+    "alpha0": 0.0,
+    "alpha1": 4.0,
+    "alpha2": 0.0,
+    "coefficient_noise": 0.06,
+    "particles": 1000,
+    "random_seed": 20260717,
+    "resample_ess_fraction": 0.5,
+    "state_noise": 0.12
+  },
+  "dtvw": {
+    "alpha0": 0.0,
+    "alpha1": 4.5,
+    "alpha2": -2.0,
+    "coefficient_noise": 0.06,
+    "particles": 1000,
+    "random_seed": 20260717,
+    "resample_ess_fraction": 0.5,
+    "state_noise": 0.12
+  },
+  "recursive_gdfc": {
+    "p": 2
+  }
+}

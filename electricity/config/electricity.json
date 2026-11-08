@@ -1,0 +1,138 @@
+{
+  "price_file": "shanxi_electricity.csv",
+  "target": "day_ahead_price",
+  "split": {
+    "burn_start": "2024-05-08",
+    "burn_end": "2024-07-06",
+    "train_start": "2024-07-07",
+    "train_end": "2024-09-04",
+    "validation_start": "2024-09-05",
+    "validation_end": "2025-02-01",
+    "test_start": "2025-02-02",
+    "test_end": "2025-08-30"
+  },
+  "components": {
+    "LeafWeightedQRF": "QRF",
+    "SpikeHurdleQRF": "Hurdle",
+    "LowerInterceptSpikeQRF90": "LowCal",
+    "UpperQ95TimeSpikeW60C001": "PeakCal",
+    "SplineGAMEVT": "GAM-EVT"
+  },
+  "distribution_bridge": {
+    "support_lower": 0.0,
+    "support_upper": 1500.0,
+    "grid_step": 5.0
+  },
+  "regions": {
+    "lower_quantile": 0.05,
+    "upper_quantile": 0.95
+  },
+  "validation_objective": {
+    "CRPS": 0.25,
+    "twCRPS_L": 0.35,
+    "twCRPS_U": 0.1,
+    "Brier_L": 0.05,
+    "Brier_U": 0.25
+  },
+  "core_tuning": {
+    "eta_grid": [
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      6.0,
+      8.0,
+      10.0,
+      12.0
+    ],
+    "alpha_grid": [
+      0.01,
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "beta_grid": [
+      0.9,
+      0.95,
+      0.99
+    ],
+    "rho_grid": [
+      0.0,
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      0.8,
+      0.85,
+      0.9,
+      0.925,
+      0.95,
+      0.975,
+      1.0
+    ]
+  },
+  "particle_filter": {
+    "particles": 1000,
+    "state_noise": 0.12,
+    "coefficient_noise": 0.06,
+    "resample_ess_fraction": 0.5,
+    "alpha0": 0.0,
+    "alpha1_grid": [
+      -10.0,
+      -6.0,
+      -2.0,
+      2.0,
+      6.0,
+      10.0
+    ],
+    "alpha2_grid": [
+      -10.0,
+      -6.0,
+      -2.0,
+      2.0,
+      6.0,
+      10.0
+    ],
+    "refine_radius": 2.0,
+    "refine_step": 0.5,
+    "random_seed": 20260717
+  },
+  "recursive_gdfc": {
+    "p_grid": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "refit_days": 7,
+    "n_starts": 3,
+    "max_iter": 2000,
+    "random_seed": 20260717,
+    "min_probability": 1e-12
+  },
+  "quantile_average": {
+    "quantile_points": 200
+  },
+  "battery": {
+    "copula_history_days": 180,
+    "copula_random_seed": 20260720,
+    "copula_replications": 10,
+    "cvar_alpha": 0.95,
+    "degradation_cny_per_mwh": 20.0,
+    "energy_mwh": 2.0,
+    "initial_soc_fraction": 0.5,
+    "interval_hours": 0.25,
+    "max_efc_per_day": 2.0,
+    "perfect_information_tolerance_cny": 1e-05,
+    "power_mw": 2.0,
+    "risk_weight": 0.5,
+    "round_trip_efficiency": 0.9
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "sales_file": "m5_food_sales_758.csv",
+  "components": {
+    "LightGBMQuantile": "LightGBM",
+    "DeepAR": "DeepAR",
+    "KNNAnalogue": "KNN analogue",
+    "GAMEVT": "GAM-EVT",
+    "LocalGAMQuantile": "Local GAM-QR"
+  },
+  "grid_size": 161,
+  "empirical_run": {
+    "eta_grid": [
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      6.0,
+      8.0,
+      10.0,
+      12.0
+    ],
+    "alpha_grid": [
+      0.01,
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "beta_grid": [
+      0.9,
+      0.95,
+      0.99
+    ],
+    "rho_grid": [
+      0.0,
+      0.01,
+      0.025,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      0.8,
+      0.95,
+      1.0
+    ]
+  },
+  "benchmarks": {
+    "particle_filter": {
+      "particles": 1000,
+      "state_noise": 0.12,
+      "coefficient_noise": 0.06,
+      "resample_ess_fraction": 0.5,
+      "alpha0": 0.0,
+      "alpha1_grid": [
+        -10.0,
+        -6.0,
+        -2.0,
+        2.0,
+        6.0,
+        10.0
+      ],
+      "alpha2_grid": [
+        -10.0,
+        -6.0,
+        -2.0,
+        2.0,
+        6.0,
+        10.0
+      ],
+      "refine_radius": 2.0,
+      "refine_step": 0.5,
+      "random_seed": 20260530
+    }
+  }
+}
